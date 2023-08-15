@@ -1,0 +1,187 @@
+{
+  "version": "3.2.6",
+  "stockGroup": [
+    {
+      "data": [],
+      "name": "默认分组"
+    }
+  ],
+  "fundGroup": [
+    {
+      "data": [
+        {
+          "name": "长信低碳环保行业量化股票A",
+          "code": "004925"
+        },
+        {
+          "name": "广发中证医疗指数(LOF)C",
+          "code": "009881"
+        },
+        {
+          "name": "前海开源中航军工指数A",
+          "code": "164402"
+        },
+        {
+          "name": "天弘中证光伏产业指数C",
+          "code": "011103"
+        },
+        {
+          "name": "国泰中证畜牧养殖ETF联接C",
+          "code": "012725"
+        },
+        {
+          "name": "鹏华国证钢铁行业指数(LOF)A",
+          "code": "502023"
+        },
+        {
+          "name": "嘉实沪深300ETF联接A",
+          "code": "160706"
+        },
+        {
+          "name": "中欧红利优享混合C",
+          "code": "004815"
+        },
+        {
+          "name": "招商中证白酒指数(LOF)C",
+          "code": "012414"
+        },
+        {
+          "name": "国联安中证半导体ETF",
+          "code": "512480"
+        },
+        {
+          "name": "农银新能源主题A",
+          "code": "002190"
+        }
+      ],
+      "name": "默认分组"
+    }
+  ],
+  "indexItemList": [
+    {
+      "market": "1",
+      "code": "000001",
+      "name": "上证指数"
+    },
+    {
+      "market": "1",
+      "code": "000300",
+      "name": "沪深300"
+    },
+    {
+      "market": "0",
+      "code": "399001",
+      "name": "深证指数"
+    },
+    {
+      "market": "0",
+      "code": "399006",
+      "name": "创业板指数"
+    },
+    {
+      "market": "1",
+      "code": "000933",
+      "name": "中证医药"
+    },
+    {
+      "market": "0",
+      "code": "399986",
+      "name": "中证银行"
+    },
+    {
+      "market": "0",
+      "code": "399997",
+      "name": "中证白酒"
+    },
+    {
+      "market": "1",
+      "code": "000820",
+      "name": "煤炭指数"
+    },
+    {
+      "market": "0",
+      "code": "399975",
+      "name": "证券公司"
+    }
+  ],
+  "config": {
+    "fundColumnShow": {
+      "jj_gz": true,
+      "jj_ccj": false,
+      "jj_ccs": false,
+      "jj_ccje": false,
+      "jj_zdf": true,
+      "jj_dtsy": false,
+      "jj_zsyl": false,
+      "jj_zsy": false
+    },
+    "stockColumnShow": {
+      "gp_sj": true,
+      "gp_ccj": false,
+      "gp_ccs": false,
+      "gp_ccje": false,
+      "gp_zdf": true,
+      "gp_dtsy": false,
+      "gp_zsyl": false,
+      "gp_zsy": false,
+      "gp_hsl": true,
+      "gp_zdfje": true
+    },
+    "badgeModel": "0",
+    "fontSize": "medium",
+    "isDark": false,
+    "isShowHeadIndex": true,
+    "popup_grayscale": 0,
+    "popup_opacity": 100,
+    "replenishmentNotice": false,
+    "is_show_fund": true
+  },
+  "stockItemList": [],
+  "fundListM": [
+    {
+      "name": "长信低碳环保行业量化股票A",
+      "code": "004925"
+    },
+    {
+      "name": "广发中证医疗指数(LOF)C",
+      "code": "009881"
+    },
+    {
+      "name": "前海开源中航军工指数A",
+      "code": "164402"
+    },
+    {
+      "name": "天弘中证光伏产业指数C",
+      "code": "011103"
+    },
+    {
+      "name": "国泰中证畜牧养殖ETF联接C",
+      "code": "012725"
+    },
+    {
+      "name": "鹏华国证钢铁行业指数(LOF)A",
+      "code": "502023"
+    },
+    {
+      "name": "嘉实沪深300ETF联接A",
+      "code": "160706"
+    },
+    {
+      "name": "中欧红利优享混合C",
+      "code": "004815"
+    },
+    {
+      "name": "招商中证白酒指数(LOF)C",
+      "code": "012414"
+    },
+    {
+      "name": "国联安中证半导体ETF",
+      "code": "512480"
+    },
+    {
+      "name": "农银新能源主题A",
+      "code": "002190"
+    }
+  ],
+  "notify": []
+}

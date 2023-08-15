@@ -1,0 +1,28 @@
+.item {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+  font-size: 18px;
+  line-height: 25px;
+}
+span {
+  display: inline-block;
+}
+.name {
+  width: 300px;
+  text-align: left;
+}
+.jz {
+  width: 120px;
+}
+.gsjz {
+  width: 150px;
+}
+.gszdf {
+  width: 200px;
+}
+.up {
+  color: red;
+}
+.down {
+  color: green;
+}
