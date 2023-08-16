@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 body {
   text-align: center;
 }
@@ -30,6 +33,9 @@ body {
 .options-btns {
   color: gray;
 }
+.options-btns span {
+  margin-right: 10px;
+}
 @media only screen and (max-width: 800px) {
   .App {
     margin-top: 0px;
@@ -48,5 +54,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+  }
+  .options-btns span {
+    margin-right: 0px;
+  }
+  .input-contaner input {
+    flex-shrink: 1;
+    margin-right: 10px;
+  }
+  .input-contaner button {
+    padding: 0;
   }
 }
