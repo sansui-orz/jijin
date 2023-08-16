@@ -1,6 +1,7 @@
-import { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useCallback, useRef } from 'react';
 import './App.css';
 import Item, { IData } from './components/item'
+import useLocalStore from './utils/hooks/useLocalStore'
 
 const ids: Array<{
   name: string;
@@ -47,10 +48,10 @@ const ids: Array<{
     "name": "前海开源中航军工指数C",
     "code": "015046"
   },
-  // {
-  //   "name": "招商中证煤炭等权指数(LOF)C",
-  //   "code": "013596"
-  // }
+  {
+    "name": "招商中证煤炭等权指数(LOF)C",
+    "code": "013596"
+  }
 ]
 
 function jsonP(id: string) {
@@ -71,21 +72,20 @@ function jsonP(id: string) {
   })
 }
 
-async function fetchAll() {
-  for (let i = 0; i < ids.length; i++) {
-    console.log('name', ids[i].name)
-    ids[i].data = await jsonP(ids[i].code)
-    console.log('name done', ids[i].name)
+async function fetchAll(list: typeof ids) {
+  for (let i = 0; i < list.length; i++) {
+    list[i].data = await jsonP(list[i].code)
   }
-  return ids
+  return list
 }
 
 function App() {
-  const [list, setList] = useState(ids)
+  const [list, setList] = useLocalStore<typeof ids>('data', ids)
   useEffect(() => {
-    fetchAll().then((res) => {
+    fetchAll(list).then((res) => {
       setList([ ...res ])
     })
+    return () => {}
   }, [])
   const inputRef = useRef<HTMLInputElement>(null)
   const addHandle = useCallback(async () => {
@@ -103,15 +103,46 @@ function App() {
       window.alert('没有找到该基金')
     }
   }, [list])
+  const refreshHandle = useCallback(async () => {
+    fetchAll(list).then((res) => {
+      setList([ ...res ])
+    })
+  }, [list])
+  const upHandle = useCallback((index: number) => {
+    if (index === 0) return
+    const target = list.splice(index, 1)[0]
+    list.splice(index - 1, 0, target)
+    setList([...list])
+  }, [list])
+  const downHandle = useCallback((index: number) => {
+    if (index === list.length - 1) return
+    const target = list.splice(index, 1)[0]
+    list.splice(index + 1, 0, target)
+    setList([...list])
+  }, [list])
+  const deleteHandle = useCallback((index: number) => {
+    list.splice(index, 1)
+    setList([...list])
+  }, [list])
   return (
     <div className="App">
-      <div>
+      <div className="input-contaner">
         <input ref={inputRef} placeholder="请输入六位基金代码"/>
         <button onClick={addHandle}>添加</button>
+        <button onClick={refreshHandle}>刷新</button>
       </div>
-      { list.map(item => (<Item key={item.code} dataId={item.code} name={item.name} data={item.data} />))}
+      { list.map((item, index) => (<Item
+        key={item.code}
+        dataId={item.code}
+        name={item.name}
+        data={item.data}
+        index={index}
+        upHandle={upHandle}
+        downHandle={downHandle}
+        deleteHandle={deleteHandle}
+      />))}
     </div>
   );
 }
 
-export default App;
+export default React.memo(App);

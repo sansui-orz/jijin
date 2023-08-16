@@ -7,4 +7,46 @@ body {
   margin-top: 20px;
   border: 1px solid #ccc;
   border-bottom: none;
+  border-top: none;
+}
+.input-contaner {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+.input-contaner input {
+  flex: 1;
+  padding: 8px 16px;
+  margin-right: 20px;
+}
+.input-contaner button:last-child {
+  margin-left: 10px;
+}
+.input-contaner button {
+  padding: 8px 16px;
+}
+.options-btns {
+  color: gray;
+}
+@media only screen and (max-width: 800px) {
+  .App {
+    margin-top: 0px;
+  }
+  .jz {
+    display: none;
+  }
+  .item>div {
+    text-align: left;
+  }
+  .item-row {
+    display: flex;
+    align-items: center;
+  }
+  .options-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 }
