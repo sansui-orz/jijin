@@ -86,6 +86,7 @@ function App() {
       setList([ ...res ])
     })
     return () => {}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const inputRef = useRef<HTMLInputElement>(null)
   const addHandle = useCallback(async () => {
@@ -102,28 +103,28 @@ function App() {
     } catch {
       window.alert('没有找到该基金')
     }
-  }, [list])
+  }, [list, setList])
   const refreshHandle = useCallback(async () => {
     fetchAll(list).then((res) => {
       setList([ ...res ])
     })
-  }, [list])
+  }, [list, setList])
   const upHandle = useCallback((index: number) => {
     if (index === 0) return
     const target = list.splice(index, 1)[0]
     list.splice(index - 1, 0, target)
     setList([...list])
-  }, [list])
+  }, [list, setList])
   const downHandle = useCallback((index: number) => {
     if (index === list.length - 1) return
     const target = list.splice(index, 1)[0]
     list.splice(index + 1, 0, target)
     setList([...list])
-  }, [list])
+  }, [list, setList])
   const deleteHandle = useCallback((index: number) => {
     list.splice(index, 1)
     setList([...list])
-  }, [list])
+  }, [list, setList])
   return (
     <div className="App">
       <div className="input-contaner">
