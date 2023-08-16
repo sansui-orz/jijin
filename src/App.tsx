@@ -64,7 +64,7 @@ function jsonP(id: string) {
       window.jsonpgz = () => {}
       resolve(json)
     }
-    script.src = `http://fundgz.1234567.com.cn/js/${id}.js?rt=1463558676006`
+    script.src = `https://fundgz.1234567.com.cn/js/${id}.js?rt=1463558676006`
     script.onerror = function() {
       reject('加载基金数据错误')
     }
