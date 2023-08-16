@@ -82,7 +82,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://fundgz.1234567.com.cn",
   "devDependencies": {
     "http-proxy-middleware": "^2.0.6"
   },
