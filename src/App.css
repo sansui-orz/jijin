@@ -36,7 +36,13 @@ body {
 .options-btns span {
   margin-right: 10px;
 }
+.name {
+  width: 300px;
+}
 @media only screen and (max-width: 800px) {
+  .name {
+    width: unset;
+  }
   .App {
     margin-top: 0px;
   }
