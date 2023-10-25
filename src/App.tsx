@@ -120,7 +120,7 @@ function App() {
     }).finally(() => {
       setLoading(false)
     })
-  }, [list, setList])
+  }, [list, setList, loading])
   const upHandle = useCallback((index: number) => {
     if (index === 0) return
     const target = list.splice(index, 1)[0]
