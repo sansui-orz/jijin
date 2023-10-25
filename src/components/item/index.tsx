@@ -13,7 +13,7 @@ export interface IData {
 
 interface iProps {
   dataId: string;
-  name: string;
+  name?: string;
   data?: IData;
   index: number;
   upHandle: (n: number) => void;
@@ -38,7 +38,7 @@ function Item(props: iProps) {
         <span className="delete" onClick={props.deleteHandle.bind(null, props.index)}>delete</span>
       </span>
     </div> : 
-    (<div className="fail-msg">{props.name}请求失败</div>)}
+    (<div className="fail-msg">{props.name || props.dataId}请求失败</div>)}
   </div>
 }
 

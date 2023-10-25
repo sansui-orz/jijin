@@ -17,18 +17,11 @@ body {
   border-bottom: 1px solid #ccc;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   padding: 10px 20px;
 }
-.input-contaner input {
-  flex: 1;
-  padding: 8px 16px;
-  margin-right: 20px;
-}
-.input-contaner button:last-child {
-  margin-left: 10px;
-}
 .input-contaner button {
-  padding: 8px 16px;
+  padding: 5px 10px;
 }
 .options-btns {
   color: gray;
@@ -63,12 +56,5 @@ body {
   }
   .options-btns span {
     margin-right: 0px;
-  }
-  .input-contaner input {
-    flex-shrink: 1;
-    margin-right: 10px;
-  }
-  .input-contaner button {
-    padding: 0;
   }
 }

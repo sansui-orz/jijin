@@ -1,10 +1,10 @@
-import React, { useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
 import Item, { IData } from './components/item'
 import useLocalStore from './utils/hooks/useLocalStore'
 
 const ids: Array<{
-  name: string;
+  name?: string;
   code: string;
   data?: IData
 }> = [
@@ -81,32 +81,44 @@ async function fetchAll(list: typeof ids) {
 
 function App() {
   const [list, setList] = useLocalStore<typeof ids>('data', ids)
+  const [loading, setLoading] = useState(false)
+  let codeList: Array<{
+    code: string;
+  }> = []
+  if (window.location.search) {
+    const _codeList = window.location.search.slice(6).split(',')
+    codeList = _codeList.map(code => ({ code }))
+  }
   useEffect(() => {
-    fetchAll(list).then((res) => {
+    fetchAll(codeList.length > 0 ? codeList : list).then((res) => {
       setList([ ...res ])
     })
     return () => {}
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  const inputRef = useRef<HTMLInputElement>(null)
-  const addHandle = useCallback(async () => {
-    try {
-      const text = inputRef.current?.value
-      const json = await jsonP(text!)
-      if (json.name && !list.find(item => item.code === text)) {
-        setList([...list, {
-          name: json.name,
-          code: text!,
-          data: json
-        }])
-      }
-    } catch {
-      window.alert('没有找到该基金')
-    }
-  }, [list, setList])
+  // const inputRef = useRef<HTMLInputElement>(null)
+  // const addHandle = useCallback(async () => {
+  //   try {
+  //     const text = inputRef.current?.value
+  //     const json = await jsonP(text!)
+  //     if (json.name && !list.find(item => item.code === text)) {
+  //       setList([...list, {
+  //         name: json.name,
+  //         code: text!,
+  //         data: json
+  //       }])
+  //     }
+  //   } catch {
+  //     window.alert('没有找到该基金')
+  //   }
+  // }, [list, setList])
   const refreshHandle = useCallback(async () => {
+    if (loading) return
+    setLoading(true)
     fetchAll(list).then((res) => {
       setList([ ...res ])
+    }).finally(() => {
+      setLoading(false)
     })
   }, [list, setList])
   const upHandle = useCallback((index: number) => {
@@ -128,9 +140,9 @@ function App() {
   return (
     <div className="App">
       <div className="input-contaner">
-        <input ref={inputRef} placeholder="请输入六位基金代码"/>
-        <button onClick={addHandle}>添加</button>
-        <button onClick={refreshHandle}>刷新</button>
+        {/* <input ref={inputRef} placeholder="请输入六位基金代码"/>
+        <button onClick={addHandle}>添加</button> */}
+        <button onClick={refreshHandle}>{loading ? '刷新中...' : '刷新'}</button>
       </div>
       { list.map((item, index) => (<Item
         key={item.code}
